@@ -1,8 +1,11 @@
+import Link from "next/link";
+
 type Project = {
   name: string;
   description: string;
   tech: string[];
   github: string;
+  href?: string;
   flagship?: boolean;
 };
 
@@ -13,6 +16,7 @@ const projects: Project[] = [
       "Flagship: hệ thống healthcare end-to-end với agent workflow (LangGraph), backend FastAPI, web Next.js và client Expo — từ orchestration AI đến trải nghiệm người dùng.",
     tech: ["LangGraph", "FastAPI", "Next.js", "Expo"],
     github: "https://github.com/giapthinh123/healthcare",
+    href: "/projects/healthcare",
     flagship: true,
   },
   {
@@ -85,15 +89,25 @@ export default function Projects() {
                       {project.description}
                     </p>
                   </div>
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex shrink-0 items-center rounded-full border border-border px-3 py-1.5 text-sm font-medium text-foreground transition hover:border-accent hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-                    aria-label={`Open ${project.name} on GitHub`}
-                  >
-                    GitHub →
-                  </a>
+                  <div className="flex shrink-0 flex-wrap gap-2">
+                    {project.href ? (
+                      <Link
+                        href={project.href}
+                        className="inline-flex items-center rounded-full bg-accent px-3 py-1.5 text-sm font-semibold text-white transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                      >
+                        Case study →
+                      </Link>
+                    ) : null}
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center rounded-full border border-border px-3 py-1.5 text-sm font-medium text-foreground transition hover:border-accent hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                      aria-label={`Open ${project.name} on GitHub`}
+                    >
+                      GitHub →
+                    </a>
+                  </div>
                 </div>
                 <ul className="mt-5 flex list-none flex-wrap gap-2 p-0" aria-label="Tech stack">
                   {project.tech.map((item) => (
