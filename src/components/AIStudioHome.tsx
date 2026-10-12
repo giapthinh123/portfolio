@@ -1,3 +1,6 @@
+"use client";
+
+import Link from "next/link";
 import Experience from "@/components/Experience";
 import LanguageSwitch, { type SiteLocale } from "@/components/LanguageSwitch";
 
@@ -356,7 +359,7 @@ function PersonalProjects({ locale, copy }: { locale: SiteLocale; copy: (typeof 
                 {project.stack.map((item) => <li key={item}>{item}</li>)}
               </ul>
               <div className="lab-project-links">
-                {project.caseStudy ? <a href={`/projects/healthcare?lang=${locale}#top`}>{copy.readCaseStudy} <span aria-hidden="true">→</span></a> : null}
+                {project.caseStudy ? <Link href={`/projects/healthcare/?lang=${locale}#top`}>{copy.readCaseStudy} <span aria-hidden="true">→</span></Link> : null}
                 <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`${copy.openGithub}: ${project.name}`}>GitHub <span aria-hidden="true">↗</span></a>
               </div>
             </article>
