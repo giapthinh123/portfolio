@@ -8,9 +8,4 @@ export const healthcareAssets = {
     booking: null,
     navigation: null,
   },
-  diagrams: {
-    system: "/healthcare/Architecture.png",
-    chat: "/healthcare/LangGraph.png",
-    hybridRag: null,
-  },
 } as const;

@@ -1,6 +1,6 @@
 # Portfolio — Thịnh Giáp (giapthinh123)
 
-Personal job-seeking portfolio site: AI / Computer Vision / Full-stack.
+Personal portfolio with an **AI Systems Lab** theme, focused on AI integration, backend systems, research work, and computer vision.
 
 **Live source:** [github.com/giapthinh123/portfolio](https://github.com/giapthinh123/portfolio)
 
@@ -12,11 +12,13 @@ Personal job-seeking portfolio site: AI / Computer Vision / Full-stack.
 
 ## Sections
 
-1. **Hero** — name, headline, CTAs
-2. **About** — short bio
-3. **Projects** — healthcare (flagship), Smart-License-Plate-Recognition-System, HAM10000-skin, mvc-fashion-shop
-4. **Skills** — from project stacks
-5. **Contact** — GitHub (+ email/LinkedIn placeholders)
+1. **Hero** — AI Systems Lab identity, role focus, and system-map visual
+2. **Profile & education** — Software Engineering studies and Applied AI training
+3. **AIRC research systems** — internal RAG assistant, corrosion prediction, and travel recommendations
+4. **Personal projects** — healthcare assistant prototype, license-plate recognition, and HAM10000 research pipeline
+5. **Toolkit & contact** — skills grounded in the CV; GitHub profile link
+
+Healthcare projects are labeled as prototypes/research, not clinically validated diagnostic tools. No performance metrics are claimed unless supported by project evidence.
 
 ## Develop
 

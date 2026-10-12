@@ -21,7 +21,7 @@ export default function AssetFrame({
 }: AssetFrameProps) {
   return (
     <div
-      className={`relative overflow-hidden rounded-[1.5rem] border border-[#255649] bg-[#12372E] ${ratioClasses[ratio]}`}
+      className={`relative overflow-hidden rounded-[1.5rem] border border-[#34483C] bg-[#11221C] ${ratioClasses[ratio]}`}
     >
       {src ? (
         <Image
@@ -36,9 +36,9 @@ export default function AssetFrame({
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
           <span
             aria-hidden="true"
-            className="block h-10 w-10 rounded-full border border-[#58E2B0]/55 bg-[#58E2B0]/10"
+            className="block h-10 w-10 rounded-full border border-[#9CE8BD]/55 bg-[#9CE8BD]/10"
           />
-          <span className="text-sm font-semibold tracking-wide text-[#B7CDC4]">
+          <span className="text-sm font-semibold tracking-wide text-[#A4B5AC]">
             {label}
           </span>
         </div>

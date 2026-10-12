@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./ai-systems.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,16 +15,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Thịnh Giáp | AI · Computer Vision · Full-stack",
+  title: "Thịnh Giáp | AI Systems Lab",
   description:
-    "Portfolio của Thịnh Giáp (giapthinh123) — AI/CV và full-stack. Dự án healthcare, YOLO, Flask, Java Servlet và hơn thế nữa.",
+    "AI and backend engineering portfolio of Giap Hoang Thinh — RAG, computer vision, research systems, and practical product engineering.",
   authors: [{ name: "Thịnh Giáp", url: "https://github.com/giapthinh123" }],
+  openGraph: {
+    title: "Thịnh Giáp | AI Systems Lab",
+    description: "Building useful systems around AI: retrieval, models, APIs, and product interfaces.",
+    type: "website",
+  },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const locale = (await headers()).get("x-site-locale") === "vi" ? "vi" : "en";
   return (
     <html
-      lang="vi"
+      lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
