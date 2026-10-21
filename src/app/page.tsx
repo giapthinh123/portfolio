@@ -6,10 +6,10 @@ import LocalizedHome from "@/components/LocalizedHome";
 export const metadata: Metadata = {
   title: "Thịnh Giáp | AI Systems Lab",
   description:
-    "AI and backend engineering portfolio of Giap Hoang Thinh — RAG, computer vision, research systems, and practical product engineering.",
+    "AI and backend engineering portfolio of Giap Hoang Thinh — Agentic AI, multi-agent orchestration, RAG, scalable Python services, and event-driven workflows.",
   openGraph: {
     title: "Thịnh Giáp | AI Systems Lab",
-    description: "Building useful systems around AI: retrieval, models, APIs, and product interfaces.",
+    description: "Agentic AI platforms, multi-agent orchestration, RAG, and production-oriented Python backend architecture.",
     type: "website",
   },
 };

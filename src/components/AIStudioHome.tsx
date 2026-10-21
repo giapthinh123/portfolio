@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import LabBackdrop from "@/components/LabBackdrop";
+import ThemeToggle from "@/components/ThemeToggle";
 import Experience from "@/components/Experience";
 import LanguageSwitch, { type SiteLocale } from "@/components/LanguageSwitch";
 
 const projectsByLocale = {
   en: [
     {
-      number: "04",
+      number: "02",
       category: "HEALTHCARE / PROTOTYPE",
       name: "Healthcare AI Assistant",
       description:
@@ -18,9 +20,20 @@ const projectsByLocale = {
       caseStudy: true,
     },
     {
-      number: "05",
+      number: "01",
+      category: "MULTI-AGENT / PLATFORM",
+      name: "AI Workforce Platform",
+      description:
+        "A building-operations platform with six system agents (A0–A5), Task DAG planning, and a Policy Approval Tool Gateway. Event-driven workflows coordinate agent tasks, while OIDC access control and observability support operation and monitoring.",
+      note: "AI / Multi-Agent Platform Engineer · personal project",
+      stack: ["LangGraph", "Qdrant", "RabbitMQ", "Redis", "OIDC / Keycloak", "OpenTelemetry", "Prometheus", "Grafana"],
+      github: null,
+      caseStudy: false,
+    },
+    {
+      number: "03",
       category: "COMPUTER VISION / DESKTOP",
-      name: "License Plate Recognition",
+      name: "Smart License Plate Recognition System",
       description:
         "A desktop application combining YOLO plate detection with EasyOCR character recognition, supporting still images and real-time camera inference.",
       stack: ["Python", "YOLO", "EasyOCR", "PyQt5", "OpenCV", "PyTorch"],
@@ -28,9 +41,9 @@ const projectsByLocale = {
       caseStudy: false,
     },
     {
-      number: "06",
+      number: "04",
       category: "MEDICAL IMAGING / RESEARCH",
-      name: "HAM10000 Skin Lesion Pipeline",
+      name: "HAM10000 Skin Lesion Detection & Classification",
       description:
         "A two-stage experiment that detects and crops skin regions with YOLO, then classifies seven lesion classes with a custom CNN trained on HAM10000.",
       note: "Research / learning project · not clinically validated",
@@ -41,7 +54,7 @@ const projectsByLocale = {
   ],
   vi: [
     {
-      number: "04",
+      number: "02",
       category: "Y TẾ / BẢN THỬ NGHIỆM",
       name: "Trợ lý AI y tế",
       description:
@@ -52,9 +65,20 @@ const projectsByLocale = {
       caseStudy: true,
     },
     {
-      number: "05",
+      number: "01",
+      category: "ĐA AGENT / NỀN TẢNG",
+      name: "AI Workforce Platform",
+      description:
+        "Nền tảng vận hành tòa nhà với sáu system agent (A0–A5), lập kế hoạch bằng Task DAG và Policy Approval Tool Gateway. Luồng xử lý theo sự kiện phối hợp tác vụ giữa các agent; tích hợp phân quyền OIDC và bộ công cụ quan sát, giám sát vận hành.",
+      note: "AI / Multi-Agent Platform Engineer · dự án cá nhân",
+      stack: ["LangGraph", "Qdrant", "RabbitMQ", "Redis", "OIDC / Keycloak", "OpenTelemetry", "Prometheus", "Grafana"],
+      github: null,
+      caseStudy: false,
+    },
+    {
+      number: "03",
       category: "THỊ GIÁC MÁY TÍNH / DESKTOP",
-      name: "Nhận diện biển số xe",
+      name: "Hệ thống nhận diện biển số xe thông minh",
       description:
         "Ứng dụng desktop kết hợp YOLO để phát hiện biển số và EasyOCR để nhận dạng ký tự, hỗ trợ ảnh tĩnh và nhận diện trực tiếp từ camera.",
       stack: ["Python", "YOLO", "EasyOCR", "PyQt5", "OpenCV", "PyTorch"],
@@ -62,9 +86,9 @@ const projectsByLocale = {
       caseStudy: false,
     },
     {
-      number: "06",
+      number: "04",
       category: "ẢNH Y KHOA / NGHIÊN CỨU",
-      name: "Quy trình phân loại tổn thương da HAM10000",
+      name: "Phát hiện & phân loại tổn thương da HAM10000",
       description:
         "Thử nghiệm hai giai đoạn: dùng YOLO phát hiện và cắt vùng da, sau đó phân loại bảy nhóm tổn thương bằng CNN tự thiết kế, huấn luyện trên HAM10000.",
       note: "Dự án nghiên cứu / học tập · chưa được kiểm chứng lâm sàng",
@@ -80,24 +104,30 @@ const projectsByLocale = {
   description: string;
   note?: string;
   stack: string[];
-  github: string;
+  github: string | null;
   caseStudy: boolean;
 }[]>;
 
 const skillGroupsByLocale = {
   en: [
     { title: "Languages", items: ["Python", "TypeScript", "SQL"] },
-    { title: "AI, ML & computer vision", items: ["PyTorch", "OpenCV", "YOLO", "RAG", "LangChain", "LangGraph"] },
-    { title: "Backend & APIs", items: ["FastAPI", "Django", "Flask", "REST APIs", "JWT authentication"] },
-    { title: "Data & infrastructure", items: ["PostgreSQL", "MongoDB", "Redis", "ChromaDB", "pgvector", "Docker", "Linux / VPS"] },
-    { title: "Frontend & delivery", items: ["Next.js", "React", "Git", "GitHub", "Postman"] },
+    { title: "AI / Agents", items: ["Agentic AI", "Multi-Agent Systems", "AgentScope", "LangGraph", "LangChain", "MCP", "RAG", "Embedding", "Reranking", "PyTorch", "YOLO", "OpenCV"] },
+    { title: "Backend", items: ["FastAPI", "Pydantic v2", "SQLAlchemy 2", "Alembic", "WebSocket", "Django", "Flask", "REST APIs", "JWT authentication"] },
+    { title: "Data", items: ["PostgreSQL", "pgvector", "Qdrant", "MongoDB", "Redis", "ChromaDB", "S3 / MinIO"] },
+    { title: "Architecture", items: ["Event-driven Architecture", "Modular Monolith", "Worker-based Architecture", "Transactional Outbox", "Optimistic Locking", "Idempotency / Deduplication"] },
+    { title: "Messaging / Infrastructure", items: ["RabbitMQ", "Docker", "Docker Compose", "Linux / VPS", "OIDC / Keycloak", "OpenTelemetry", "Prometheus", "Grafana"] },
+    { title: "Frontend", items: ["React", "TypeScript", "Next.js", "Vite", "Tailwind CSS"] },
+    { title: "Tools", items: ["Git", "GitHub", "Postman"] },
   ],
   vi: [
     { title: "Ngôn ngữ lập trình", items: ["Python", "TypeScript", "SQL"] },
-    { title: "AI, học máy & thị giác máy tính", items: ["PyTorch", "OpenCV", "YOLO", "RAG", "LangChain", "LangGraph"] },
-    { title: "Backend & API", items: ["FastAPI", "Django", "Flask", "API REST", "Xác thực JWT"] },
-    { title: "Dữ liệu & hạ tầng", items: ["PostgreSQL", "MongoDB", "Redis", "ChromaDB", "pgvector", "Docker", "Linux / VPS"] },
-    { title: "Frontend & triển khai", items: ["Next.js", "React", "Git", "GitHub", "Postman"] },
+    { title: "AI / Agent", items: ["Agentic AI", "Multi-Agent Systems", "AgentScope", "LangGraph", "LangChain", "MCP", "RAG", "Embedding", "Reranking", "PyTorch", "YOLO", "OpenCV"] },
+    { title: "Backend", items: ["FastAPI", "Pydantic v2", "SQLAlchemy 2", "Alembic", "WebSocket", "Django", "Flask", "API REST", "Xác thực JWT"] },
+    { title: "Dữ liệu", items: ["PostgreSQL", "pgvector", "Qdrant", "MongoDB", "Redis", "ChromaDB", "S3 / MinIO"] },
+    { title: "Kiến trúc", items: ["Event-driven Architecture", "Modular Monolith", "Worker-based Architecture", "Transactional Outbox", "Optimistic Locking", "Idempotency / Deduplication"] },
+    { title: "Messaging / Hạ tầng", items: ["RabbitMQ", "Docker", "Docker Compose", "Linux / VPS", "OIDC / Keycloak", "OpenTelemetry", "Prometheus", "Grafana"] },
+    { title: "Frontend", items: ["React", "TypeScript", "Next.js", "Vite", "Tailwind CSS"] },
+    { title: "Công cụ", items: ["Git", "GitHub", "Postman"] },
   ],
 } satisfies Record<SiteLocale, { title: string; items: string[] }[]>;
 
@@ -118,32 +148,32 @@ const homeCopy = {
       location: "HANOI, VIETNAM",
       role: "AI Engineer",
       secondaryRole: "Backend Developer",
-      intro: "I build the layers around AI — retrieval pipelines, prediction services, recommendation logic, and product interfaces that turn models into useful systems.",
+      intro: "I build Agentic AI platforms, multi-agent orchestration, and RAG systems, backed by scalable Python services and event-driven workflows that connect agents, knowledge, and tools.",
       workButton: "Explore selected work",
-      contactButton: "Contact via GitHub",
-      experienceLabel: "EXPERIENCE",
-      experienceValue: "AI & Web Development Intern · AIRC · 2025–2026",
+      contactButton: "Get in touch",
+      experienceLabel: "CURRENT ROLE",
+      experienceValue: "AI Engineer Intern · Vinsmart Future · 2026–Present",
       lookingLabel: "LOOKING FOR",
       lookingValue: "AI Engineer or Backend Developer roles",
-      visualLabel: "Conceptual system map: data and context flow through models and retrieval into services and product interfaces",
-      systemMap: "SYSTEM MAP / 001",
+      visualLabel: "Conceptual agentic workflow: Agent Studio and AgentSpec connect to multi-agent orchestration and RAG, then a tool gateway, policy, and event bus",
+      systemMap: "AGENTIC WORKFLOW / 001",
       mapStatus: "BUILD PATTERN",
       nodes: [
-        { step: "01 / INPUT", title: "Data & context", detail: "documents · images · preferences" },
-        { step: "02 / INTELLIGENCE", title: "Models & retrieval", detail: "RAG · prediction · ranking" },
-        { step: "03 / DELIVERY", title: "Services & product", detail: "APIs · storage · interfaces" },
+        { step: "01 / DEFINE", title: "Agent Studio & Spec", detail: "goals · rules · tools · knowledge" },
+        { step: "02 / COORDINATE", title: "Multi-agent orchestration & RAG", detail: "leader · specialists · shared context" },
+        { step: "03 / EXECUTE", title: "Tool gateway, policy & event bus", detail: "approval · workers · events" },
       ],
-      mapFooter: "FROM MODEL TO USEFUL SYSTEM",
+      mapFooter: "FROM AGENT SPEC TO EXECUTION",
       mapEnd: "END-TO-END",
     },
     about: {
-      kicker: "00 / PROFILE",
+      kicker: "01 / ABOUT",
       title: "An engineer who thinks in systems.",
       firstLead: "I’m ",
       name: "Giap Hoang Thinh",
-      firstParagraph: ", a Software Engineering student with hands-on experience in backend development and AI integration. My work spans RAG applications, recommendation systems, scientific prediction, and computer vision.",
-      secondParagraph: "I enjoy making the pieces work together: shaping data flows, exposing model capabilities through APIs, and connecting them to interfaces people can use. I’m looking for an AI Engineer or Backend Developer role where I can keep building that bridge.",
-      index: "00—01",
+      firstParagraph: ", a Software Engineering student and AI Engineer Intern at Vinsmart Future. My focus is Agentic AI, multi-agent systems, and production-oriented AI platforms, bringing together agent configuration, orchestration, retrieval, and backend services.",
+      secondParagraph: "I work on scalable Python services and event-driven workflows, with attention to policy controls, reliable task execution, and observability. Earlier projects at AIRC gave me a foundation in RAG, recommendation systems, scientific prediction, and computer vision. I’m looking to keep building as an AI Engineer or Backend Developer.",
+      index: "PROFILE",
       factsLabel: "Education and training",
       facts: [
         { period: "2023–2026", title: "Software Engineering", detail: "East Asia University of Technology" },
@@ -156,23 +186,27 @@ const homeCopy = {
       techLabel: "Technologies used in",
       readCaseStudy: "Read case study",
       openGithub: "Open on GitHub",
-      kicker: "02 / SELECTED BUILDS",
-      title: "Experiments, made tangible.",
-      lede: "Personal projects exploring how AI and computer vision workflows can be packaged into usable tools.",
-      index: "03 BUILDS",
+      kicker: "03 / SELECTED PROJECTS",
+      title: "Platforms, agents, and applied AI.",
+      lede: "Four personal projects spanning multi-agent building operations, healthcare assistance, and computer vision.",
+      index: "04 PROJECTS",
     },
     skills: {
-      kicker: "03 / TOOLKIT",
+      kicker: "04 / SKILLS",
       title: "A practical, product-facing stack.",
-      lede: "Grouped around the work above — from model integration and data storage to APIs, interfaces, and deployment.",
-      index: "TOOLS",
+      lede: "From agent orchestration and retrieval to Python services, event-driven architecture, and observability.",
+      index: "08 GROUPS",
     },
     contact: {
-      kicker: "04 / CONTACT",
+      kicker: "05 / CONTACT",
       title: "Let’s build something useful.",
-      description: "Open to AI Engineer and Backend Developer opportunities. Connect with me on GitHub to start a conversation.",
-      primary: "Open GitHub profile",
+      description: "Open to AI Engineer and Backend Developer opportunities. Get in touch to discuss agent platforms, backend systems, or a collaboration.",
+      primary: "Send an email",
       secondary: "GitHub",
+      emailLabel: "Email",
+      phoneLabel: "Phone",
+      locationLabel: "Location",
+      location: "Gia Lam, Ha Noi",
     },
     footer: "© {year} Thịnh Giáp · AI Systems Lab",
     source: "Source on GitHub",
@@ -193,32 +227,32 @@ const homeCopy = {
       location: "HÀ NỘI, VIỆT NAM",
       role: "Kỹ sư AI",
       secondaryRole: "Lập trình Backend",
-      intro: "Tôi xây dựng các lớp nền tảng xoay quanh AI — từ pipeline truy xuất, dịch vụ dự đoán, logic gợi ý đến giao diện sản phẩm, để biến mô hình thành những hệ thống hữu ích.",
+      intro: "Tôi xây dựng nền tảng Agentic AI, điều phối đa agent và hệ thống RAG, kết hợp dịch vụ Python có khả năng mở rộng với luồng xử lý theo sự kiện để kết nối agent, tri thức và công cụ.",
       workButton: "Khám phá dự án tiêu biểu",
-      contactButton: "Liên hệ qua GitHub",
-      experienceLabel: "KINH NGHIỆM",
-      experienceValue: "Thực tập Phát triển AI & Web · AIRC · 2025–2026",
+      contactButton: "Kết nối với tôi",
+      experienceLabel: "VỊ TRÍ HIỆN TẠI",
+      experienceValue: "Thực tập sinh Kỹ sư AI · Vinsmart Future · 2026–Hiện tại",
       lookingLabel: "ĐANG TÌM KIẾM",
       lookingValue: "Cơ hội Kỹ sư AI hoặc Lập trình Backend",
-      visualLabel: "Sơ đồ khái niệm: dữ liệu và ngữ cảnh đi qua mô hình, truy xuất rồi đến dịch vụ và giao diện sản phẩm",
-      systemMap: "SƠ ĐỒ HỆ THỐNG / 001",
+      visualLabel: "Luồng agent khái niệm: Agent Studio và AgentSpec kết nối điều phối đa agent và RAG, sau đó đến cổng công cụ, chính sách và bus sự kiện",
+      systemMap: "LUỒNG AGENT / 001",
       mapStatus: "MẪU KIẾN TRÚC",
       nodes: [
-        { step: "01 / ĐẦU VÀO", title: "Dữ liệu & ngữ cảnh", detail: "tài liệu · hình ảnh · tùy chọn" },
-        { step: "02 / XỬ LÝ", title: "Mô hình & truy xuất", detail: "RAG · dự đoán · xếp hạng" },
-        { step: "03 / TRIỂN KHAI", title: "Dịch vụ & sản phẩm", detail: "API · lưu trữ · giao diện" },
+        { step: "01 / ĐỊNH NGHĨA", title: "Agent Studio & Spec", detail: "mục tiêu · quy tắc · công cụ · tri thức" },
+        { step: "02 / ĐIỀU PHỐI", title: "Điều phối đa agent & RAG", detail: "leader · agent chuyên môn · ngữ cảnh chung" },
+        { step: "03 / THỰC THI", title: "Cổng công cụ, chính sách & sự kiện", detail: "phê duyệt · worker · sự kiện" },
       ],
-      mapFooter: "TỪ MÔ HÌNH ĐẾN HỆ THỐNG HỮU ÍCH",
+      mapFooter: "TỪ ĐỊNH NGHĨA AGENT ĐẾN THỰC THI",
       mapEnd: "ĐẦU CUỐI ĐẾN ĐẦU",
     },
     about: {
-      kicker: "00 / HỒ SƠ",
+      kicker: "01 / GIỚI THIỆU",
       title: "Kỹ sư tư duy theo hệ thống.",
       firstLead: "Tôi là ",
       name: "Giáp Hoàng Thịnh",
-      firstParagraph: ", sinh viên ngành Kỹ thuật Phần mềm, có kinh nghiệm thực hành về phát triển backend và tích hợp AI. Các dự án của tôi trải rộng từ ứng dụng RAG, hệ thống gợi ý, dự đoán khoa học đến thị giác máy tính.",
-      secondParagraph: "Tôi thích kết nối các thành phần: tổ chức luồng dữ liệu, đưa khả năng của mô hình ra API và gắn chúng với giao diện dễ sử dụng. Tôi đang tìm cơ hội Kỹ sư AI hoặc Lập trình Backend để tiếp tục xây dựng cầu nối đó.",
-      index: "00—01",
+      firstParagraph: ", sinh viên ngành Kỹ thuật Phần mềm và thực tập sinh Kỹ sư AI tại Vinsmart Future. Tôi tập trung vào Agentic AI, hệ thống đa agent và nền tảng AI hướng đến vận hành thực tế, kết nối cấu hình agent, điều phối, truy xuất tri thức và dịch vụ backend.",
+      secondParagraph: "Tôi phát triển dịch vụ Python có khả năng mở rộng và luồng xử lý theo sự kiện, chú trọng kiểm soát chính sách, thực thi tác vụ tin cậy và khả năng quan sát hệ thống. Các dự án trước tại AIRC giúp tôi xây dựng nền tảng về RAG, hệ thống gợi ý, dự đoán khoa học và thị giác máy tính. Tôi mong muốn tiếp tục phát triển ở vị trí Kỹ sư AI hoặc Lập trình Backend.",
+      index: "HỒ SƠ",
       factsLabel: "Học vấn và đào tạo",
       facts: [
         { period: "2023–2026", title: "Kỹ thuật Phần mềm", detail: "Trường Đại học Công nghệ Đông Á" },
@@ -231,23 +265,27 @@ const homeCopy = {
       techLabel: "Công nghệ sử dụng trong",
       readCaseStudy: "Xem hồ sơ dự án",
       openGithub: "Mở trên GitHub",
-      kicker: "02 / DỰ ÁN TIÊU BIỂU",
-      title: "Biến thử nghiệm thành công cụ hữu ích.",
-      lede: "Các dự án cá nhân tìm hiểu cách đóng gói quy trình AI và thị giác máy tính thành những công cụ dễ sử dụng.",
-      index: "03 DỰ ÁN",
+      kicker: "03 / DỰ ÁN TIÊU BIỂU",
+      title: "Nền tảng, agent và AI ứng dụng.",
+      lede: "Bốn dự án cá nhân về vận hành tòa nhà bằng đa agent, trợ lý y tế và thị giác máy tính.",
+      index: "04 DỰ ÁN",
     },
     skills: {
-      kicker: "03 / BỘ CÔNG CỤ",
+      kicker: "04 / KỸ NĂNG",
       title: "Bộ công nghệ thiết thực, hướng đến sản phẩm.",
-      lede: "Nhóm theo các dự án phía trên — từ tích hợp mô hình, lưu trữ dữ liệu đến API, giao diện và triển khai.",
-      index: "CÔNG NGHỆ",
+      lede: "Từ điều phối agent, truy xuất tri thức đến dịch vụ Python, kiến trúc hướng sự kiện và quan sát hệ thống.",
+      index: "08 NHÓM",
     },
     contact: {
-      kicker: "04 / LIÊN HỆ",
+      kicker: "05 / LIÊN HỆ",
       title: "Cùng xây dựng điều hữu ích.",
-      description: "Tôi đang tìm cơ hội Kỹ sư AI hoặc Lập trình Backend. Hãy kết nối qua GitHub để bắt đầu trò chuyện.",
-      primary: "Mở hồ sơ GitHub",
+      description: "Tôi đang tìm cơ hội Kỹ sư AI hoặc Lập trình Backend. Hãy liên hệ để trao đổi về nền tảng agent, hệ thống backend hoặc cơ hội hợp tác.",
+      primary: "Gửi email",
       secondary: "GitHub",
+      emailLabel: "Email",
+      phoneLabel: "Điện thoại",
+      locationLabel: "Địa chỉ",
+      location: "Gia Lâm, Hà Nội",
     },
     footer: "© {year} Thịnh Giáp · AI Systems Lab",
     source: "Mã nguồn trên GitHub",
@@ -269,6 +307,7 @@ function Header({ locale, copy }: { locale: SiteLocale; copy: (typeof homeCopy)[
           {copy.nav.map(({ href, label }) => <a key={href} href={href}>{label}</a>)}
         </nav>
         <div className="lab-header-actions">
+          <ThemeToggle locale={locale} />
           <LanguageSwitch locale={locale} path="/" />
           <a className="lab-header-link" href="https://github.com/giapthinh123" target="_blank" rel="noopener noreferrer">
             {copy.github} <span aria-hidden="true">↗</span>
@@ -282,14 +321,15 @@ function Header({ locale, copy }: { locale: SiteLocale; copy: (typeof homeCopy)[
 function Hero({ copy }: { copy: (typeof homeCopy)[SiteLocale]["hero"] }) {
   return (
     <section className="lab-hero" id="top" aria-labelledby="hero-title">
+      <LabBackdrop />
       <div className="lab-hero-copy">
         <p className="lab-eyebrow"><span className="lab-live-dot" aria-hidden="true" />{copy.kicker} <span>/</span> {copy.location}</p>
-        <h1 id="hero-title">Thịnh<br /><span>Giáp.</span></h1>
+        <h1 id="hero-title">Thịnh<br /><span>Giáp</span></h1>
         <p className="lab-role">{copy.role} <span>·</span> {copy.secondaryRole}</p>
         <p className="lab-intro">{copy.intro}</p>
         <div className="lab-actions">
           <a className="lab-button lab-button-primary" href="#projects">{copy.workButton} <span aria-hidden="true">↓</span></a>
-          <a className="lab-button lab-button-outline" href="https://github.com/giapthinh123" target="_blank" rel="noopener noreferrer">{copy.contactButton} <span aria-hidden="true">↗</span></a>
+          <a className="lab-button lab-button-outline" href="#contact">{copy.contactButton} <span aria-hidden="true">↗</span></a>
         </div>
         <div className="lab-hero-meta">
           <div><span>{copy.experienceLabel}</span><strong>{copy.experienceValue}</strong></div>
@@ -304,7 +344,12 @@ function Hero({ copy }: { copy: (typeof homeCopy)[SiteLocale]["hero"] }) {
               <span>{node.step}</span>
               <div><strong>{node.title}</strong><small>{node.detail}</small></div>
             </div>
-          )).flatMap((node, index, nodes) => index < nodes.length - 1 ? [node, <i key={`flow-${index}`} />] : [node])}
+          )).flatMap((node, index, nodes) => index < nodes.length - 1 ? [node,
+            <svg className="lab-flow-connector" key={`flow-${index}`} viewBox="0 0 12 24" aria-hidden="true"><path d="M6 0v24" /></svg>,
+          ] : [node])}
+        </div>
+        <div className="lab-system-badges" aria-hidden="true">
+          {["A0–A5 Agents", "MCP Gateway", "Qdrant Vector", "RabbitMQ Outbox"].map((badge) => <span key={badge}>{badge}</span>)}
         </div>
         <div className="lab-visual-bottom"><span>{copy.mapFooter}</span><b>{copy.mapEnd}</b></div>
       </div>
@@ -340,7 +385,7 @@ function About({ copy }: { copy: (typeof homeCopy)[SiteLocale]["about"] }) {
 }
 
 function PersonalProjects({ locale, copy }: { locale: SiteLocale; copy: (typeof homeCopy)[SiteLocale]["work"] }) {
-  const projects = projectsByLocale[locale];
+  const projects = [...projectsByLocale[locale]].sort((a, b) => a.number.localeCompare(b.number));
   return (
     <section id="projects" className="lab-section lab-section-tint" aria-labelledby="projects-title">
       <div className="lab-container">
@@ -348,9 +393,9 @@ function PersonalProjects({ locale, copy }: { locale: SiteLocale; copy: (typeof 
           <div><p className="lab-section-kicker">{copy.kicker}</p><h2 id="projects-title">{copy.title}</h2><p className="lab-section-lede">{copy.lede}</p></div>
           <span className="lab-section-index">{copy.index}</span>
         </div>
-        <div className="lab-project-grid">
+        <div className="lab-project-grid lab-personal-projects">
           {projects.map((project) => (
-            <article className="lab-project-card" key={project.number}>
+            <article className="lab-project-card" data-tone={project.number === "01" || project.caseStudy ? "agent" : undefined} key={project.number}>
               <div className="lab-card-top"><span>{project.number} / {copy.label}</span><small>{project.category}</small></div>
               <h3>{project.name}</h3>
               {project.note ? <div className="lab-project-note">{project.note}</div> : null}
@@ -360,7 +405,7 @@ function PersonalProjects({ locale, copy }: { locale: SiteLocale; copy: (typeof 
               </ul>
               <div className="lab-project-links">
                 {project.caseStudy ? <Link href={`/projects/healthcare/?lang=${locale}#top`}>{copy.readCaseStudy} <span aria-hidden="true">→</span></Link> : null}
-                <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`${copy.openGithub}: ${project.name}`}>GitHub <span aria-hidden="true">↗</span></a>
+                {project.github ? <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`${copy.openGithub}: ${project.name}`}>GitHub <span aria-hidden="true">↗</span></a> : null}
               </div>
             </article>
           ))}
@@ -380,7 +425,7 @@ function Skills({ locale, copy }: { locale: SiteLocale; copy: (typeof homeCopy)[
         </div>
         <div className="lab-skills-grid">
           {skillGroupsByLocale[locale].map((group) => (
-            <article className="lab-skill-card" key={group.title}>
+            <article className="lab-skill-card" data-tone={group.title.startsWith("AI /") ? "agent" : undefined} key={group.title}>
               <h3>{group.title}</h3>
               <ul className="lab-tags">{group.items.map((item) => <li key={item}>{item}</li>)}</ul>
             </article>
@@ -396,10 +441,19 @@ function Contact({ copy }: { copy: (typeof homeCopy)[SiteLocale]["contact"] }) {
     <section id="contact" className="lab-section lab-section-tint" aria-labelledby="contact-title">
       <div className="lab-container">
         <div className="lab-contact-panel">
-          <div><p className="lab-section-kicker">{copy.kicker}</p><h2 id="contact-title">{copy.title}</h2><p>{copy.description}</p></div>
+          <div>
+            <p className="lab-section-kicker">{copy.kicker}</p>
+            <h2 id="contact-title">{copy.title}</h2>
+            <p>{copy.description}</p>
+            <dl className="lab-contact-details">
+              <div><dt>{copy.emailLabel}</dt><dd><a href="mailto:thinhgiap76@gmail.com">thinhgiap76@gmail.com</a></dd></div>
+              <div><dt>{copy.phoneLabel}</dt><dd><a href="tel:+84967410732">0967 410 732</a></dd></div>
+              <div><dt>{copy.locationLabel}</dt><dd>{copy.location}</dd></div>
+            </dl>
+          </div>
           <div className="lab-contact-actions">
-            <a className="lab-button lab-button-primary" href="https://github.com/giapthinh123" target="_blank" rel="noopener noreferrer">{copy.primary} <span aria-hidden="true">↗</span></a>
-            <a className="lab-button lab-button-outline" href="https://github.com/giapthinh123" target="_blank" rel="noopener noreferrer">{copy.secondary} <span aria-hidden="true">↗</span></a>
+            <a className="lab-button lab-button-primary" href="mailto:thinhgiap76@gmail.com">{copy.primary} <span aria-hidden="true">↗</span></a>
+            <a className="lab-button lab-button-outline" href="https://github.com/giapthinh123" target="_blank" rel="noopener noreferrer">{copy.secondary} / giapthinh123 <span aria-hidden="true">↗</span></a>
           </div>
         </div>
       </div>

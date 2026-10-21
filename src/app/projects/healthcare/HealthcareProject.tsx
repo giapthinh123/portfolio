@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import LabBackdrop from "@/components/LabBackdrop";
+import ThemeToggle from "@/components/ThemeToggle";
 import LanguageSwitch from "@/components/LanguageSwitch";
 import AssetFrame from "./AssetFrame";
 import VideoDemo from "./VideoDemo";
@@ -24,7 +26,7 @@ const pageCopy = {
     sourceCode: "Source code",
     hero: {
       eyebrow: "HEALTHCARE / CASE STUDY",
-      titleAccent: "Healthcare AI.",
+      titleAccent: "Healthcare AI",
       intro:
         "A personal multimodal healthcare assistant prototype exploring symptom clarification, emergency screening, specialty guidance, doctor discovery, and appointment workflows.",
       roleLabel: "Role",
@@ -33,15 +35,15 @@ const pageCopy = {
       projectTypeValue: "Personal project",
       statusLabel: "Status",
       statusValue: "Research prototype",
-      imageAlt: "VMEC Healthcare AI project image",
-      snapshot: "PROJECT SNAPSHOT / VMEC",
+      imageAlt: "Healthcare AI project image",
+      snapshot: "PROJECT SNAPSHOT / HEALTHCARE AI",
       prototype: "RESEARCH PROTOTYPE",
     },
     demo: {
       kicker: "01 / PROJECT WALKTHROUGH",
       title: "A look at the prototype flow.",
       slides: "Open project slides",
-      playLabel: "Play the VMEC Healthcare AI demo",
+      playLabel: "Play the Healthcare AI demo",
       unavailable: "The project demo video is not available.",
     },
     contribution: {
@@ -106,7 +108,7 @@ const pageCopy = {
         { title: "Clinical boundary", description: "Not clinically validated; it must not be used to diagnose, prescribe, or replace professional care." },
       ],
     },
-    footer: "VMEC Healthcare AI · Case study by Thịnh Giáp",
+    footer: "Healthcare AI · Case study by Thịnh Giáp",
     footerLink: "Back to AI Systems Lab",
   },
   vi: {
@@ -122,7 +124,7 @@ const pageCopy = {
     sourceCode: "Mã nguồn",
     hero: {
       eyebrow: "Y TẾ / HỒ SƠ DỰ ÁN",
-      titleAccent: "AI y tế.",
+      titleAccent: "Healthcare AI",
       intro:
         "Bản thử nghiệm cá nhân về trợ lý y tế đa phương thức, tìm hiểu cách làm rõ triệu chứng, sàng lọc tình huống khẩn cấp, định hướng chuyên khoa, tìm bác sĩ và hỗ trợ quy trình hẹn khám.",
       roleLabel: "Vai trò",
@@ -131,15 +133,15 @@ const pageCopy = {
       projectTypeValue: "Dự án cá nhân",
       statusLabel: "Trạng thái",
       statusValue: "Bản thử nghiệm nghiên cứu",
-      imageAlt: "Hình ảnh dự án trợ lý AI y tế VMEC",
-      snapshot: "HÌNH ẢNH DỰ ÁN / VMEC",
+      imageAlt: "Hình ảnh dự án trợ lý Healthcare AI",
+      snapshot: "HÌNH ẢNH DỰ ÁN / HEALTHCARE AI",
       prototype: "BẢN THỬ NGHIỆM NGHIÊN CỨU",
     },
     demo: {
       kicker: "01 / GIỚI THIỆU DỰ ÁN",
       title: "Khám phá luồng hoạt động của bản thử nghiệm.",
       slides: "Mở slide dự án",
-      playLabel: "Phát video giới thiệu trợ lý AI y tế VMEC",
+      playLabel: "Phát video giới thiệu trợ lý Healthcare AI",
       unavailable: "Hiện chưa có video giới thiệu dự án.",
     },
     contribution: {
@@ -204,7 +206,7 @@ const pageCopy = {
         { title: "Giới hạn lâm sàng", description: "Chưa được kiểm chứng lâm sàng; không dùng để chẩn đoán, kê đơn hoặc thay thế chăm sóc chuyên môn." },
       ],
     },
-    footer: "AI y tế VMEC · Hồ sơ dự án của Thịnh Giáp",
+    footer: "Healthcare AI · Hồ sơ dự án của Thịnh Giáp",
     footerLink: "Quay lại AI Systems Lab",
   },
 } satisfies Record<Language, Record<string, unknown>>;
@@ -232,6 +234,7 @@ export default function HealthcareProject({ language }: { language: Language }) 
           </nav>
 
           <div className="lab-header-actions">
+            <ThemeToggle locale={language} />
             <LanguageSwitch locale={language} path="/projects/healthcare" />
             <a
               className="lab-header-link"
@@ -247,6 +250,7 @@ export default function HealthcareProject({ language }: { language: Language }) 
 
       <main id="main-content" lang={language} className={styles.page}>
         <section id="top" className={styles.hero} aria-labelledby="case-study-title">
+          <LabBackdrop />
           <div className={styles.heroInner}>
             <div className={styles.heroCopy}>
               <p className={`lab-eyebrow ${styles.heroEyebrow}`}>
@@ -254,7 +258,6 @@ export default function HealthcareProject({ language }: { language: Language }) 
                 {copy.hero.eyebrow}
               </p>
               <h1 id="case-study-title" className={styles.title}>
-                VMEC
                 <span>{copy.hero.titleAccent}</span>
               </h1>
               <p className={styles.heroIntro}>{copy.hero.intro}</p>

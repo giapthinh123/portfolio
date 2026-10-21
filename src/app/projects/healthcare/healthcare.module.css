@@ -31,8 +31,9 @@
   overflow: hidden;
   border-bottom: 1px solid var(--border);
   background:
-    radial-gradient(ellipse at 82% 38%, rgba(156, 232, 189, 0.075), transparent 36rem),
-    linear-gradient(180deg, rgba(16, 32, 25, 0.18), transparent 82%);
+    radial-gradient(ellipse at 82% 38%, rgba(56, 189, 248, 0.075), transparent 36rem),
+    radial-gradient(ellipse at 12% 80%, rgba(139, 92, 246, 0.08), transparent 32rem),
+    linear-gradient(180deg, rgba(16, 24, 44, 0.18), transparent 82%);
 }
 
 .hero::after {
@@ -40,9 +41,9 @@
   z-index: -1;
   inset: 0;
   background-image:
-    linear-gradient(rgba(200, 234, 215, 0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(200, 234, 215, 0.018) 1px, transparent 1px);
-  background-size: 72px 72px;
+    linear-gradient(rgba(129, 140, 248, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(129, 140, 248, 0.018) 1px, transparent 1px);
+  background-size: 48px 48px;
   content: "";
   mask-image: linear-gradient(to bottom, black, transparent 82%);
   pointer-events: none;
@@ -55,6 +56,8 @@
 }
 
 .heroInner {
+  position: relative;
+  z-index: 1;
   display: grid;
   min-height: 610px;
   grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
@@ -84,6 +87,11 @@
 
 .title span {
   color: var(--accent);
+  background: var(--title-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: 0.12em;
 }
 
 .heroIntro {
@@ -102,7 +110,8 @@
   margin: 36px 0 0;
   border: 1px solid var(--border);
   border-radius: 16px;
-  background: rgba(13, 25, 21, 0.78);
+  background: var(--surface);
+  backdrop-filter: blur(12px);
 }
 
 .metrics > div {
@@ -144,10 +153,11 @@
 }
 
 .heroVisual > :global(div) {
-  border-color: rgba(190, 226, 208, 0.18);
+  border-color: var(--border);
   border-radius: 20px;
-  background: linear-gradient(145deg, rgba(18, 37, 29, 0.97), rgba(8, 20, 16, 0.97));
-  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.27);
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--card-shadow);
 }
 
 .visualCaption {
@@ -171,7 +181,7 @@
 }
 
 .tintedSection {
-  background: linear-gradient(180deg, rgba(16, 32, 25, 0.58), rgba(8, 18, 15, 0.38));
+  background: var(--section-bg);
 }
 
 .sectionHeading {
@@ -203,7 +213,7 @@
 .sectionIndex {
   flex: none;
   padding-bottom: 4px;
-  color: rgba(156, 232, 189, 0.56);
+  color: var(--soft);
   font-size: 10px;
   letter-spacing: 0.1em;
 }
@@ -220,7 +230,7 @@
 .textLink:hover {
   color: var(--accent);
   text-decoration: underline;
-  text-decoration-color: rgba(156, 232, 189, 0.55);
+  text-decoration-color: rgba(56, 189, 248, 0.55);
 }
 
 .demoSection {
@@ -231,8 +241,8 @@
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 20px;
-  background: #050b08;
-  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.24);
+  background: #050811;
+  box-shadow: var(--card-shadow);
 }
 
 .contributionList {
@@ -302,21 +312,23 @@
 .safetyCard {
   min-width: 0;
   border: 1px solid var(--border);
+  border-top-color: var(--border-top);
   border-radius: 16px;
   padding: 21px;
-  background: linear-gradient(150deg, rgba(16, 31, 25, 0.94), rgba(10, 21, 17, 0.9));
-  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(12px);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
 }
 
 .capabilityCard:hover,
 .safetyCard:hover {
-  transform: translateY(-2px);
-  border-color: rgba(156, 232, 189, 0.35);
-  background: linear-gradient(150deg, rgba(19, 39, 30, 0.96), rgba(10, 21, 17, 0.95));
+  border-color: var(--border-hover);
+  background: var(--card-hover-bg);
 }
 
 .cardNumber {
-  color: rgba(156, 232, 189, 0.66);
+  color: var(--soft);
   font-size: 9px;
 }
 
@@ -349,9 +361,10 @@
 .diagramWrap :global(figure) {
   overflow: hidden;
   border: 1px solid var(--border);
+  border-top-color: var(--border-top);
   border-radius: 20px;
-  background: linear-gradient(150deg, rgba(16, 31, 25, 0.95), rgba(10, 21, 17, 0.95));
-  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.22);
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
 }
 
 .diagramWrap :global(figcaption) {
@@ -378,14 +391,22 @@
 }
 
 .safetyCard:last-child {
-  border-color: rgba(156, 232, 189, 0.2);
-  background: linear-gradient(150deg, rgba(20, 40, 30, 0.96), rgba(10, 21, 17, 0.94));
+  border-color: var(--agent-border);
+  background: var(--card-bg);
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .capabilityCard:hover,
+  .safetyCard:hover {
+    transform: perspective(1000px) translateY(-5px) rotateX(2deg) rotateY(-2deg);
+    box-shadow: var(--card-shadow);
+  }
 }
 
 .footer {
   position: relative;
   z-index: 1;
-  background: rgba(7, 16, 14, 0.45);
+  background: var(--header-bg);
 }
 
 .footerInner {

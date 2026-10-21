@@ -4,11 +4,11 @@ import HealthcareProject from "./HealthcareProject";
 import LocalizedHealthcareProject from "./LocalizedHealthcareProject";
 
 export const metadata: Metadata = {
-  title: "VMEC Healthcare AI | Thịnh Giáp",
+  title: "Healthcare AI | Thịnh Giáp",
   description:
     "Personal healthcare AI research prototype by Thịnh Giáp. Not a clinically validated diagnostic or treatment tool.",
   openGraph: {
-    title: "VMEC Healthcare AI | Thịnh Giáp",
+    title: "Healthcare AI | Thịnh Giáp",
     description:
       "Personal healthcare AI research prototype by Thịnh Giáp. Not a clinically validated diagnostic or treatment tool.",
     type: "article",

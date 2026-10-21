@@ -31,7 +31,7 @@ export default function VideoDemo({ source, poster, playLabel, unavailableText }
 
   if (!source) {
     return (
-      <div className="flex aspect-video items-center justify-center rounded-[1.5rem] border border-[#34483C] bg-[#11221C] p-6 text-center text-[#A4B5AC]">
+      <div className="flex aspect-video items-center justify-center rounded-[1.5rem] border border-[var(--border)] bg-[var(--surface)] p-6 text-center text-[var(--muted)]">
         {unavailableText}
       </div>
     );
@@ -42,7 +42,7 @@ export default function VideoDemo({ source, poster, playLabel, unavailableText }
   };
 
   return (
-    <div className="group relative aspect-video overflow-hidden rounded-[1.5rem] border border-[#34483C] bg-black shadow-2xl shadow-black/25">
+    <div className="group relative aspect-video overflow-hidden rounded-[1.5rem] border border-[var(--border)] bg-black shadow-2xl shadow-black/25">
       <video
         ref={videoRef}
         className="h-full w-full object-contain"
@@ -63,7 +63,7 @@ export default function VideoDemo({ source, poster, playLabel, unavailableText }
           type="button"
           onClick={playVideo}
           aria-label={playLabel}
-          className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[#9CE8BD] text-[#092017] shadow-xl transition hover:scale-105 hover:bg-[#C5F4D5] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#EDF5F0]"
+          className="absolute left-1/2 top-1/2 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-[var(--accent)] text-[var(--accent-ink)] shadow-xl transition hover:scale-105 hover:bg-[var(--accent-strong)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
         >
           <span className="ml-1 text-3xl" aria-hidden="true">▶</span>
         </button>
